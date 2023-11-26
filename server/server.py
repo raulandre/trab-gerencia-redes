@@ -20,7 +20,7 @@ def calcula_fatorial():
 
 @app.route('/anime')
 def anime():
-    tags = ['cringe', 'dance', 'happy', 'kill', 'slap', 'glomp', 'yeet', 'bonk', 'smug', 'megumin']
+    tags = ['cringe', 'dance', 'happy', 'kill', 'slap', 'glomp', 'yeet', 'bonk', 'smug']
     response = requests.get('https://api.waifu.pics/sfw/' + random.choice(tags))
     json_data = json.loads(response.text)
     image_url = json_data['url']
