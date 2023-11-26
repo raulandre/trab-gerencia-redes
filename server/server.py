@@ -1,8 +1,8 @@
 from flask import Flask, request, send_file
-import time ,os, json, requests, atexit
+import time ,os, json, requests, atexit, shutil
 
 def purge_shitty_images():
-    os.system('rm img/*')
+    shutil.rmtree('img/')
 
 app = Flask(__name__)
 
