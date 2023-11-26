@@ -1,5 +1,5 @@
 from flask import Flask, request, send_file
-import time ,os, json, requests, atexit, shutil
+import time ,os, json, requests, atexit, shutil, random
 
 def purge_shitty_images():
     shutil.rmtree('img/')
@@ -20,7 +20,8 @@ def calcula_fatorial():
 
 @app.route('/anime')
 def anime():
-    response = requests.get('https://api.waifu.pics/sfw/cringe')
+    tags = ['cringe', 'dance', 'happy', 'kill', 'slap', 'glomp', 'yeet', 'bonk', 'smug', 'megumin', ]
+    response = requests.get('https://api.waifu.pics/sfw/' + random.choice(tags))
     json_data = json.loads(response.text)
     image_url = json_data['url']
     image_name = image_url.split('/')[-1]
