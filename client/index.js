@@ -13,7 +13,16 @@ app.get('/fatorial', (req, res, next) => {
         res.sendStatus(500);
     })
     .end();
-})
+});
+
+app.get('/anime', (req, res, next) => {
+    http.request(`${serverAddr}/anime`, (result) => {
+        result.pipe(res);
+    }).on('error', (e) => {
+        res.sendStatus(500);
+    })
+    .end();
+});
 
 app.listen(3000, () => {
     console.log('cliente rodando na porta 3000');
