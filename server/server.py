@@ -4,6 +4,9 @@ import time ,os, json, requests, atexit, shutil, random
 def purge_shitty_images():
     shutil.rmtree('img/')
 
+if not os.path.exists('img/'):
+    os.makedirs('img/')
+
 app = Flask(__name__)
 
 def fatorial(n):
@@ -27,9 +30,6 @@ def anime():
     image_name = image_url.split('/')[-1]
 
     image_data = requests.get(image_url).content
-    
-    if not os.path.exists('img/'):
-        os.makedirs('img/')
 
     with open('img/' + image_name, 'wb') as handler:
         handler.write(image_data)
