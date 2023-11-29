@@ -19,6 +19,8 @@ def fatorial(n):
 @app.route('/fatorial')
 def calcula_fatorial():
     n = request.args.get('n', default=0, type=int)
+    if n < 0:
+        return 'N deve ser maior ou igual a zero.'
     return f'Fatorial de {n} = {fatorial(n)}'
 
 @app.route('/anime')
