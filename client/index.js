@@ -24,6 +24,16 @@ app.get('/anime', (req, res, next) => {
     .end();
 });
 
+app.get('/pokemon', (req, res, next) => {
+    var { n } = req.query;
+    http.request(`${serverAddr}/pokemon`, (result) => {
+        result.pipe(res);
+    }).on('error', (e) => {
+        res.sendStatus(500);
+    })
+    .end();
+});
+
 app.listen(3000, () => {
     console.log('cliente rodando na porta 3000');
 });
