@@ -39,4 +39,17 @@ def anime():
 
 atexit.register(purge_shitty_images)
 
+@app.route('/pokemon')
+def pokemon ():
+    nome_pokemon = "pikachu"
+    pokemon_url = f"https://pokeapi.co/api/v2/pokemon/{nome_pokemon}"
+    resposta = requests.get(pokemon_url)
+    if resposta.status_code == 200:
+    	pokemon = resposta.json()
+    	print(f"Nome: {pokemon['name']}")
+    	print(f"Altura: {pokemon['height']}")
+    	print(f"Ataque: {pokemon['stats'][1]['base_stat']}")
+    else:
+    	print("Não conseguimosobter as informações")
+
 app.run(host='localhost', port=3001)
